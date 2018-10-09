@@ -20,11 +20,14 @@ namespace LabNumber2
             } while (PromptToContinue());
         }
 
-        static void OutputDimensions()
+        static void InputForRoomSize()
         {
-            Console.WriteLine($"\r\nVolume: {roomVolume}cub-ft");
-            Console.WriteLine($"Area: {roomArea}sq-ft");
-            Console.WriteLine($"Permiter: {roomPerim}ft\r\n");
+            Console.Write("Enter length: ");
+            roomLength = double.Parse(Console.ReadLine());
+            Console.Write("Enter width: ");
+            roomWidth = double.Parse(Console.ReadLine());
+            Console.Write("Enter heigth: ");
+            roomHeigth = double.Parse(Console.ReadLine());
         }
 
         static void CalculateDimensions()
@@ -34,14 +37,11 @@ namespace LabNumber2
             roomVolume = roomHeigth * roomLength * roomWidth;
         }
 
-        static void InputForRoomSize()
+        static void OutputDimensions()
         {
-            Console.Write("Enter length: ");
-            roomLength = double.Parse(Console.ReadLine());
-            Console.Write("Enter width: ");
-            roomWidth = double.Parse(Console.ReadLine());
-            Console.Write("Enter heigth: ");
-            roomHeigth = double.Parse(Console.ReadLine());
+            Console.WriteLine($"\r\nVolume: {roomVolume}cub-ft");
+            Console.WriteLine($"Area: {roomArea}sq-ft");
+            Console.WriteLine($"Permiter: {roomPerim}ft\r\n");
         }
 
         static bool PromptToContinue()
