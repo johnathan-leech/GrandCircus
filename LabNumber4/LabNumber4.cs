@@ -10,21 +10,23 @@ namespace LabNumber4
             Console.WriteLine("Learn your squares and cubes!");
             do
             {
-                MakesHeader();
+                PromptsUserAndMakesHeader();
                 OutputsPowersOfUserInteger();
             } while (LoopsAgain());
         }
 
         static void GetIntegerFromUser()
         {
+
+        }
+
+        static void PromptsUserAndMakesHeader()
+        {
+
             Console.Write("\r\nEnter an integer: ");
             userInt = int.Parse(Console.ReadLine());
             Console.WriteLine("");
-        }
 
-        static void MakesHeader()
-        {
-            GetIntegerFromUser();
             string number = "Number".PadRight(20);
             string squared = "Squared".PadRight(20);
             string cubed = "Cubed";
