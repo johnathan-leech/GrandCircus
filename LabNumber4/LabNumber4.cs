@@ -5,6 +5,7 @@ namespace LabNumber4
     class LabNumber4
     {
         static int userInt;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Learn your squares and cubes!");
@@ -15,14 +16,8 @@ namespace LabNumber4
             } while (LoopsAgain());
         }
 
-        static void GetIntegerFromUser()
-        {
-
-        }
-
         static void PromptsUserAndMakesHeader()
         {
-
             Console.Write("\r\nEnter an integer: ");
             userInt = int.Parse(Console.ReadLine());
             Console.WriteLine("");
