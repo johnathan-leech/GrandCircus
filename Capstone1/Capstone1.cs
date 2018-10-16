@@ -1,70 +1,104 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
-namespace Capstone1
+class MainClass
 {
-    class Capstone1
+    public static void Main(string[] args)
     {
-        static string finalString = "";
+        Console.WriteLine("Welcome to the Pig Latin Translator");
 
-        static void Main(string[] args)
+        do
         {
-            Console.WriteLine("Welcome to the Pig Latin Translator");
-
-            TranslateToPigLatin(GetsUserInput());
-
-            Console.WriteLine(finalString);
-        }
-
-        static string GetsUserInput()
-        {
-            Console.Write("Enter a line to be translated: ");
-            string sentence;
-            return sentence = Console.ReadLine().ToLower();
-        }
-
-
-        static void TranslateToPigLatin(string sentence)
-        {
-            string vowels = "aeiou";
-            string[] words = sentence.Split(' ');
-
-            foreach (string word in words)
+            string userInput = GetsUserInput();
+            // if statement validates that a word/sentence was entered.
+            // if so, it goes on to translate the sentence to piglatin
+            if (string.IsNullOrWhiteSpace(userInput))
             {
-
-                string firstLetter = word.Substring(0, 1);
-                string secondLetter = word.Substring(1, 1);
-                string thirdLetter = word.Substring(2, 1);
-
-                string wordStem = word.Substring(1, word.Length - 1);
-                string wordStem2 = word.Substring(2, word.Length - 2);
-                string wordStem3 = word.Substring(3, word.Length - 3);
-
-                int indexTestVowel = vowels.IndexOf(firstLetter);
-                int indexTestVowel2 = vowels.IndexOf(secondLetter);
-                int indexTestVowel3 = vowels.IndexOf(thirdLetter);
-
-                if (indexTestVowel == -1)
+                Console.WriteLine("Enter a word or sentence.");
+            }
+            else
+            {
+                TranslateToPigLatin(userInput);
+                if (PromptUserToContinue() == false)
                 {
-                    if (indexTestVowel2 == -1)
-                    {
-                        if (indexTestVowel3 == -1)
-                        {
-                            finalString += wordStem3 + firstLetter + secondLetter + thirdLetter + "ay ";
-                        }
-                        finalString += wordStem2 + firstLetter + secondLetter + "ay ";
-                    }
-                    else
-                    {
-                        finalString += wordStem + firstLetter + "ay ";
-                    }
+                    break;
                 }
-                else if (indexTestVowel == 0)
-                {
-                    finalString += firstLetter + wordStem + "way ";
-                }
+            }
+        } while (true);
+    }
 
+    static string GetsUserInput()
+    {
+        Console.Write("Enter a line to be translated: ");
+        return Console.ReadLine().ToLower();
+    }
+
+    static void TranslateToPigLatin(string sentence)
+    {
+        string vowels = "aeiou";
+        List<string> words = new List<string>();
+        List<string> finalString = new List<string>();
+        // splits sentence to individual words
+        words = sentence.Split(' ').ToList();
+
+        // iterates through each individual word 
+        foreach (string word in words)
+        {
+            int length = word.Length;
+            string newWord = word;
+
+            /* iterates through the letters in the separate words,
+               in order to see if a consonant needs to be "popped" and
+               then added to the end. If it's a vowel "way" is simply added.
+            */
+            for (int i = 0; i < length; i++)
+            {
+                char letter = word[i];
+                bool isVowel = vowels.Contains(letter);
+
+                // starts w/ a vowel
+                if (isVowel && i == 0)
+                {
+                    finalString.Add(newWord + "way");
+                    break;
+                }
+                // is currently a vowel
+                if (isVowel && i > 0)
+                {
+                    finalString.Add(newWord + "ay");
+                    //finalString.Append<string>(newWord + "ay");
+                    break;
+                }
+                // or it must be a consonant
+                if (!isVowel)
+                {
+                    newWord = newWord.Remove(0, 1);
+                    newWord = newWord + letter;
+                }
+            }
+        }
+        // takes each individual word and joins it to "finalString"
+        // and outputs the string value
+        Console.WriteLine(String.Join(" ", finalString));
+    }
+
+    static bool PromptUserToContinue()
+    {
+        while (true)
+        {
+            Console.WriteLine("Translate another line? (y/n): ");
+            string loopAgain = Console.ReadLine().ToLower();
+            if (loopAgain == "y")
+            {
+                return true;
+            }
+            else if (loopAgain == "n")
+            {
+                return false;
             }
 
+            Console.WriteLine("Only enter 'y' or 'n'.");
         }
     }
 }
