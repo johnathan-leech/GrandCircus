@@ -61,7 +61,7 @@ namespace LabNumber8
 
         static void GetsAndVerifiesUserInputID()
         {
-            Console.Write("\r\nEnter an ID number: ");
+            Console.Write("\r\nEnter an ID number between 1 and 20: ");
             while (true)
             {
                 try
