@@ -5,6 +5,7 @@ namespace LabNumber8
     class LabNumber8
     {
         static int userInputID;
+        static string food, town, foodTownDecision;
         static void Main(string[] args)
         {
             // declaring my arrays with which I will use to get index values
@@ -27,12 +28,22 @@ namespace LabNumber8
                 return;
             }
 
-            Console.WriteLine("Please enter 'food' or 'town'");
 
-            VerifiesFoodTown();
+            do
+            {
+                VerifiesFoodTown();
 
-            Console.WriteLine($"{name}'s favorite food is {food}.");
-            Console.WriteLine($"{name}'s favorite town is {town}.");
+                if (foodTownDecision == "town")
+                {
+                    Console.WriteLine($"{name}'s favorite town is {town}.");
+                }
+                if (foodTownDecision == "food")
+                {
+                    Console.WriteLine($"{name}'s favorite food is {food}.");
+                }
+
+                Console.Write("Are you finished? (y/n): ");
+            } while (!ContinueProgram());
         }
 
         static void GetsAndVerifiesUserInputID()
@@ -82,9 +93,24 @@ namespace LabNumber8
             }
         }
 
-        static void VerifiesFoodTown()
+        static string VerifiesFoodTown()
         {
+            Console.WriteLine("Please enter 'food' or 'town'");
 
+            while (true)
+            {
+                foodTownDecision = Console.ReadLine().ToLower();
+
+                if (foodTownDecision == "food" || foodTownDecision == "town")
+                {
+                    return foodTownDecision;
+                }
+                else
+                {
+                    Console.WriteLine("That is not a valid option.");
+                    Console.WriteLine("Please enter only 'food' or 'town'.");
+                }
+            }
         }
     }
 }
