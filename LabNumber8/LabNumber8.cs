@@ -5,50 +5,63 @@ namespace LabNumber8
     class LabNumber8
     {
         static int userInputID;
-        static string food, town, foodTownDecision;
+        static string foodTownDecision;
         static void Main(string[] args)
         {
-            // declaring my arrays with which I will use to get index values
-            // for my user prompts.
-            string[] names = System.IO.File.ReadAllLines("Names.txt");
-            string[] foods = System.IO.File.ReadAllLines("Food.txt");
-            string[] towns = System.IO.File.ReadAllLines("Town.txt");
+            while (true)
+            {    // declaring my arrays with which I will use to get index values
+                // for my user prompts.
+                string[] names = System.IO.File.ReadAllLines("Names.txt");
+                string[] foods = System.IO.File.ReadAllLines("Food.txt");
+                string[] towns = System.IO.File.ReadAllLines("Town.txt");
 
-            GetsAndVerifiesUserInputID();
+                GetsAndVerifiesUserInputID();
 
-            string name = names[userInputID - 1];
-            string food = foods[userInputID - 1];
-            string town = towns[userInputID - 1];
+                string name = names[userInputID - 1];
+                string food = foods[userInputID - 1];
+                string town = towns[userInputID - 1];
 
-            Console.WriteLine($"The student that you have chosen is: {name}");
-            Console.WriteLine($"Would you like to know {name}'s favorite food or town? (y/n): ");
+                Console.WriteLine($"\r\nThe student that you have chosen: {name}");
+                //Console.Write($"Would you like to know {name}'s favorite food or town?: ");
 
-            if (!ContinueProgram())
-            {
-                return;
+                while (true)
+                {
+                    VerifiesFoodTown();
+
+                    if (foodTownDecision == "town")
+                    {
+                        Console.WriteLine($"{name}'s favorite town is {town}.\r\n");
+                    }
+                    if (foodTownDecision == "food")
+                    {
+                        Console.WriteLine($"{name}'s favorite food is {food}.\r\n");
+                    }
+
+                    Console.Write("Are you finished with this student? (y/n): ");
+
+                    if (!ContinueProgram())
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                Console.Write("Would you like to look at another student? (y/n): ");
+
+
+                if (!ContinueProgram())
+                {
+                    return;
+                }
             }
-
-
-            do
-            {
-                VerifiesFoodTown();
-
-                if (foodTownDecision == "town")
-                {
-                    Console.WriteLine($"{name}'s favorite town is {town}.");
-                }
-                if (foodTownDecision == "food")
-                {
-                    Console.WriteLine($"{name}'s favorite food is {food}.");
-                }
-
-                Console.Write("Are you finished? (y/n): ");
-            } while (!ContinueProgram());
         }
 
         static void GetsAndVerifiesUserInputID()
         {
-            Console.WriteLine("Enter an ID number: ");
+            Console.Write("\r\nEnter an ID number: ");
             while (true)
             {
                 try
@@ -95,7 +108,7 @@ namespace LabNumber8
 
         static string VerifiesFoodTown()
         {
-            Console.WriteLine("Please enter 'food' or 'town'");
+            Console.Write("Please enter 'food' or 'town': ");
 
             while (true)
             {
