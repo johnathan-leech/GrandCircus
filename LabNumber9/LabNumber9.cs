@@ -9,7 +9,7 @@ namespace LabNumber9
     class LabNumber9
     {
         static int userInputID;
-        static string foodTownHeightDecision;
+        static string foodTownColorDecision;
         static int counter;
 
         static void Main(string[] args)
@@ -17,14 +17,14 @@ namespace LabNumber9
             while (true)
             {
                 List<string> names = System.IO.File.ReadAllLines("Names.txt").ToList();
-                List<string> towns = System.IO.File.ReadAllLines("Town.txt").ToList();
+                List<string> towns = System.IO.File.ReadAllLines("Towns.txt").ToList();
                 List<string> foods = System.IO.File.ReadAllLines("Food.txt").ToList();
-                List<string> hghts = System.IO.File.ReadAllLines("Height.txt").ToList();
+                List<string> colrs = System.IO.File.ReadAllLines("Colors.txt").ToList();
 
                 File.AppendAllText("Names.txt", "\r\n");
-                File.AppendAllText("Town.txt", "\r\n");
+                File.AppendAllText("Towns.txt", "\r\n");
                 File.AppendAllText("Food.txt", "\r\n");
-                File.AppendAllText("Height.txt", "\r\n");
+                File.AppendAllText("Colors.txt", "\r\n");
 
                 // counter's value is used to keep track of how many elements are in
                 // the List's, so that future validation is possible
@@ -35,25 +35,25 @@ namespace LabNumber9
                 string name = names[userInputID - 1];
                 string food = foods[userInputID - 1];
                 string town = towns[userInputID - 1];
-                string hght = hghts[userInputID - 1];
+                string colr = colrs[userInputID - 1];
 
                 Console.WriteLine($"\r\nThe student that you have chosen: {name}");
 
                 while (true)
                 {
-                    VerifiesFoodTownHeight();
+                    VerifiesFoodTownColor();
 
-                    if (foodTownHeightDecision == "town")
+                    if (foodTownColorDecision == "town")
                     {
                         Console.WriteLine($"{name}'s favorite town is {town}.\r\n");
                     }
-                    if (foodTownHeightDecision == "food")
+                    if (foodTownColorDecision == "food")
                     {
                         Console.WriteLine($"{name}'s favorite food is {food}.\r\n");
                     }
-                    if (foodTownHeightDecision == "height")
+                    if (foodTownColorDecision == "height")
                     {
-                        Console.WriteLine($"{name} is {hght} tall.\r\n");
+                        Console.WriteLine($"{name}'s favorite color is {colr}.\r\n");
                     }
 
                     Console.Write("Are you finished with this student? (y/n): ");
@@ -130,23 +130,23 @@ namespace LabNumber9
             }
         }
 
-        static string VerifiesFoodTownHeight()
+        static string VerifiesFoodTownColor()
         {
-            Console.Write("Please enter 'town', 'food', or 'height': ");
+            Console.Write("Please enter 'town', 'food', or 'color': ");
 
             while (true)
             {
-                foodTownHeightDecision = Console.ReadLine().ToLower().Trim();
+                foodTownColorDecision = Console.ReadLine().ToLower().Trim();
 
-                if (foodTownHeightDecision == "town" || foodTownHeightDecision == "food"
-                    || foodTownHeightDecision == "height")
+                if (foodTownColorDecision == "town" || foodTownColorDecision == "food"
+                    || foodTownColorDecision == "color")
                 {
-                    return foodTownHeightDecision;
+                    return foodTownColorDecision;
                 }
                 else
                 {
                     Console.WriteLine("That is not a valid option.");
-                    Console.WriteLine("Please enter only 'town', 'food', or 'height'.");
+                    Console.WriteLine("Please enter only 'town', 'food', or 'color'.");
                 }
             }
         }
@@ -164,17 +164,16 @@ namespace LabNumber9
             Console.Write("Enter town: ");
             string newTown = Console.ReadLine().ToLower().Trim();
             newTown = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(newTown);
-            File.AppendAllText("Town.txt", newTown);
-
+            File.AppendAllText("Towns.txt", newTown);
 
             Console.Write("Enter food: ");
             string newFood = Console.ReadLine().ToLower().Trim();
             newFood = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(newFood);
             File.AppendAllText("Food.txt", newFood);
 
-            Console.Write("Enter height: ");
-            string newHght = Console.ReadLine().Trim();
-            File.AppendAllText("Height.txt", newHght);
+            Console.Write("Enter color: ");
+            string newColr = Console.ReadLine().Trim();
+            File.AppendAllText("Colors.txt", newColr);
         }
     }
 }
