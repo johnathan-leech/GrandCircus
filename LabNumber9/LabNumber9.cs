@@ -21,6 +21,11 @@ namespace LabNumber9
                 List<string> foods = System.IO.File.ReadAllLines("Food.txt").ToList();
                 List<string> hghts = System.IO.File.ReadAllLines("Height.txt").ToList();
 
+                File.AppendAllText("Names.txt", "\r\n");
+                File.AppendAllText("Town.txt", "\r\n");
+                File.AppendAllText("Food.txt", "\r\n");
+                File.AppendAllText("Height.txt", "\r\n");
+
                 // counter's value is used to keep track of how many elements are in
                 // the List's, so that future validation is possible
                 counter = names.Count();
@@ -74,13 +79,6 @@ namespace LabNumber9
 
                 if (!ContinueProgram())
                 {
-                    // by putting cursor to the next line at the end of the code before
-                    // returning, I guarantee that if/when the program is run again the
-                    // new data is not skewing the existing data
-                    File.AppendAllText("Names.txt", "\r\n");
-                    File.AppendAllText("Town.txt", "\r\n");
-                    File.AppendAllText("Food.txt", "\r\n");
-                    File.AppendAllText("Height.txt", "\r\n");
                     return;
                 }
             }
@@ -91,7 +89,6 @@ namespace LabNumber9
             Console.Write($"\r\nEnter an ID number between 1 and {counter}: ");
             while (true)
             {
-
                 try
                 {
                     userInputID = int.Parse(Console.ReadLine());
@@ -163,26 +160,21 @@ namespace LabNumber9
             newName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(newName);
             // new information is appended to the end of the text file
             File.AppendAllText("Names.txt", newName);
-            File.AppendAllText("Names.txt", "\r\n");
 
             Console.Write("Enter town: ");
             string newTown = Console.ReadLine().ToLower().Trim();
             newTown = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(newTown);
             File.AppendAllText("Town.txt", newTown);
-            File.AppendAllText("Town.txt", "\r\n");
 
 
             Console.Write("Enter food: ");
             string newFood = Console.ReadLine().ToLower().Trim();
             newFood = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(newFood);
             File.AppendAllText("Food.txt", newFood);
-            File.AppendAllText("Food.txt", "\r\n");
 
             Console.Write("Enter height: ");
             string newHght = Console.ReadLine().Trim();
             File.AppendAllText("Height.txt", newHght);
-            File.AppendAllText("Height.txt", "\r\n");
-            File.AppendAllText("Food.txt", "\r\n");
         }
     }
 }

@@ -1,20 +1,20 @@
-Ash
-Pikachu
+﻿Ash
 Brock
-Squirtle
-Pidgey
-Misty
-Oak
-Bulbasoar
+Bulbasaur
 Charmander
-Meowth
+Clefairy
+Giovanni
 James
 Jessie
 Joy
-Chansey
-Giovanni
-Mr. Mime
+Meowth
 Mew
 Mewtwo
+Misty
+Mr. Mime
+Oak
 Onix
+Pidgey
+Pikachu
 Red
+Squirtle
