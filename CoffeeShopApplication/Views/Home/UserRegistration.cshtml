@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "UserRegistration";
+}
+
+<h2>Registration</h2>
+<br /> <br /> <br /> 
+
+<form action="/Home/AddUser" method="post">
+    <label class="control-label">First Name</label> <input type="text" name="FirstName" class="form-control" />
+    <br />
+    <label class="control-label">Last Name</label> <input type="text" name="LastName" class="form-control" />
+    <br />
+    <label class="control-label">Email</label> <input type="text" name="Email" class="form-control" />
+    <br />
+    <label class="control-label">Phone Number</label> <input type="text" name="YoDigits" class="form-control" />
+    <br /> <br />
+    <input type="submit" value="Sign Up!" class="btn-default" />
+</form>
