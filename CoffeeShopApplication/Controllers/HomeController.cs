@@ -48,9 +48,10 @@ namespace CoffeeShopApplication.Controllers
             {
                 string firstName = new string(CharsToTitleCase(newUser.FirstName).ToArray());
 
-                ViewBag.ConfMessage1 = "Welcome " + firstName + " " + newUser.LastName;
+                ViewBag.ConfMessage1 = "Welcome " + firstName;
                 ViewBag.ConfMessage2 = "Your email address: " + newUser.Email;
                 ViewBag.ConfMessage3 = "Your phone number: " + newUser.YoDigits;
+                ViewBag.ConfMessage4 = "Your password has been set";
 
                 return View("Confirm");
             }
@@ -59,5 +60,7 @@ namespace CoffeeShopApplication.Controllers
                 return View("Error");
             }
         }
+
+
     }
 }

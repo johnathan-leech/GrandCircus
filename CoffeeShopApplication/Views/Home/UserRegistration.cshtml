@@ -5,15 +5,34 @@
 
 <h2>Registration</h2>
 <br /> <br /> <br /> 
+<link href="/Content/Index.css" rel="stylesheet"/>
+<script src="~/Scripts/Validation.js"></script>
 
 <form action="/Home/AddUser" method="post">
-    <label class="control-label">First Name</label> <input type="text" name="FirstName" class="form-control" />
+    <div class="flex-container">
+        <input id="FirstName" type="text" name="FirstName" class="form-control" onkeyup="ValidateFirstName()"/> 
+        <label class="control-label">First Name</label> <p id="empty1" class="validateMessage"></p>
+    </div>
     <br />
-    <label class="control-label">Last Name</label> <input type="text" name="LastName" class="form-control" />
+    <div class="flex-container">
+        <input id="LastName" type="text" name="LastName" class="form-control" onkeyup="ValidateLastName()" /> 
+        <label class="control-label">Last Name</label> <p id="empty2" class="validateMessage"></p>
+    </div>
     <br />
-    <label class="control-label">Email</label> <input type="text" name="Email" class="form-control" />
+    <div class="flex-container">
+        <input id="Email" type="text" name="Email" class="form-control" onkeyup="ValidateEmail()" /> 
+        <label class="control-label">Email</label> <p id="empty3" class="validateMessage"></p>
+    </div>
     <br />
-    <label class="control-label">Phone Number</label> <input type="text" name="YoDigits" class="form-control" />
-    <br /> <br />
+    <div class="flex-container">
+        <input id="YoDigits" type="text" name="YoDigits" class="form-control" onkeyup="ValidatePhone()"/> 
+        <label class="control-label">Phone Number</label> <p id="empty4" class="validateMessage"></p>
+    </div>
+    <br />
+    <div class="flex-container">
+        <input id="Password" type="text" name="Password" class="form-control" onkeyup="ValidatePassword()"/> 
+        <label class="control-label">Password</label> <p id="empty5" class="validateMessage"></p>
+    </div>
+    <br /> <br /> <br />
     <input type="submit" value="Sign Up!" class="btn-default" />
 </form>
