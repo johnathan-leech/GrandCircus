@@ -1,8 +1,8 @@
-﻿var regexFirst = /[a-zA-Z]{2,}/g;
-var regexLast = /[a-zA-Z]{2,}/g;
-var regexEmail = /[A-z0-9]{4,}@[A-z0-9]{2,}\.[A-z0-9]{1,}/g;
-var regexPhone = /(\+?1?[0-9]{10})|([0-9]{3}[- ][0-9]{3}[- ][0-9]{4})|(\(\d{3}\)\d{3}[- ]\d{4})/g;
-var regexPassword = /[A-z]{2,}/g;  //TODO: change this for actual regex for password
+﻿var regexFirst = /^[a-zA-Z]{2,}$/;
+var regexLast = /^[a-zA-Z]{2,}$/;
+var regexEmail = /^[A-z0-9]{4,}@[A-z0-9]{2,}\.[A-z0-9]{1,}$/;
+var regexPhone = /^(\+?1?[0-9]{10})|([0-9]{3}[- ][0-9]{3}[- ][0-9]{4})|(\(\d{3}\)\d{3}[- ]\d{4})$/;
+var regexPassword = /^[A-z]{2,}$/;  //TODO: change this for actual regex for password
 
 function ValidateFirstName() {
     if (regexFirst.test(document.getElementById("FirstName").value)) {
@@ -38,7 +38,7 @@ function ValidateEmail() {
 }
 
 function ValidatePhone() {
-    if (regexPhone.test(document.getElementById("YoDigits").value)) {
+    if (regexPhone.test(document.getElementById("Phone").value)) {
         document.getElementById("empty4").style.color = "green";
         document.getElementById("empty4").innerHTML = "Valid";
     }

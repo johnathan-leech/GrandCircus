@@ -9,6 +9,8 @@ namespace CoffeeShopApplication.Controllers
     {
         public ActionResult Index()
         {
+            CoffeeShopDBEntities1 database = new CoffeeShopDBEntities1();
+            var listOfItemsFromDB = database.Items;
             return View();
         }
 
@@ -42,16 +44,16 @@ namespace CoffeeShopApplication.Controllers
             }
         }
 
-        public ActionResult AddUser(UserInfo newUser)
+        public ActionResult AddUser(UserInfo newUserInfo)
         {
             if (ModelState.IsValid)
             {
-                string firstName = new string(CharsToTitleCase(newUser.FirstName).ToArray());
+                string firstName = new string(CharsToTitleCase(newUserInfo.FirstName).ToArray());
 
                 ViewBag.ConfMessage1 = "Welcome " + firstName;
-                ViewBag.ConfMessage2 = "Your email address: " + newUser.Email;
-                ViewBag.ConfMessage3 = "Your phone number: " + newUser.YoDigits;
-                ViewBag.ConfMessage4 = "Your password has been set";
+                ViewBag.AddedUser = "Item was successfully added";
+                User newUser = UserFromUserInfo(newUserInfo);
+                AddInfo(newUser);
 
                 return View("Confirm");
             }
@@ -61,6 +63,23 @@ namespace CoffeeShopApplication.Controllers
             }
         }
 
+        public void AddInfo(User newUser)
+        {
+            CoffeeShopDBEntities database = new CoffeeShopDBEntities();   // Object Relational Mapping
+            database.Users.Add(newUser);
+            database.SaveChanges();
+        }
 
+        public User UserFromUserInfo(UserInfo newUserInfo)
+        {
+            User newUser = new User();
+            newUser.firstName = newUserInfo.FirstName;
+            newUser.lastName = newUserInfo.LastName;
+            newUser.password = newUserInfo.Password;
+            newUser.email = newUserInfo.Email;
+            newUser.phoneNum = newUserInfo.Phone;
+
+            return newUser;
+        }
     }
 }

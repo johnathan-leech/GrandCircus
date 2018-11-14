@@ -4,6 +4,7 @@
 }
 
 <h2>Registration</h2>
+<h4>@ViewBag.AddedUser</h4>
 <br /> <br /> <br /> 
 <link href="/Content/Index.css" rel="stylesheet"/>
 <script src="~/Scripts/Validation.js"></script>
@@ -25,12 +26,12 @@
     </div>
     <br />
     <div class="flex-container">
-        <input id="YoDigits" type="text" name="YoDigits" class="form-control" onkeyup="ValidatePhone()"/> 
+        <input id="Phone" type="text" name="Phone" class="form-control" onkeyup="ValidatePhone()"/> 
         <label class="control-label">Phone Number</label> <p id="empty4" class="validateMessage"></p>
     </div>
     <br />
     <div class="flex-container">
-        <input id="Password" type="text" name="Password" class="form-control" onkeyup="ValidatePassword()"/> 
+        <input id="Password" type="password" name="Password" class="form-control" onkeyup="ValidatePassword()"/> 
         <label class="control-label">Password</label> <p id="empty5" class="validateMessage"></p>
     </div>
     <br /> <br /> <br />

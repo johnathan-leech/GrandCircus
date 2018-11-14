@@ -18,7 +18,7 @@ namespace CoffeeShopApplication.Models
 
         [Required]
         [RegularExpression(@"(\+?1?[0-9]{10})|([0-9]{3}[- ][0-9]{3}[- ][0-9]{4})|(\(\d{3}\)\d{3}[- ]\d{4})")]
-        public string YoDigits { set; get; }
+        public string Phone { set; get; }
 
         [Required]
         [RegularExpression(@"[A-z]{2,}")]
@@ -27,16 +27,18 @@ namespace CoffeeShopApplication.Models
 
         public UserInfo()
         {
-            FirstName = ""; LastName = ""; Email = ""; YoDigits = ""; Password = "";
+            FirstName = ""; LastName = ""; Email = ""; Phone = ""; Password = "";
         }
 
-        public UserInfo(string firstN, string lastN, string email, string digits, string password)
+        public UserInfo(string firstN, string lastN, string email, string phone, string password)
         {
             FirstName = firstN;
             LastName = lastN;
             Email = email;
-            YoDigits = digits;
+            Phone = phone;
             Password = password;
         }
+
+
     }
 }
