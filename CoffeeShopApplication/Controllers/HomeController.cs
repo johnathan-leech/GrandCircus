@@ -7,10 +7,15 @@ namespace CoffeeShopApplication.Controllers
 {
     public class HomeController : Controller
     {
+        public List<Item> listOfItemsFromDB;
+
         public ActionResult Index()
         {
             CoffeeShopDBEntities1 database = new CoffeeShopDBEntities1();
-            var listOfItemsFromDB = database.Items;
+            ViewBag.ItemsList = database.Items.ToList<Item>();
+
+            //ViewBag.listItems = database.Items.ToList<Item>();
+
             return View();
         }
 

@@ -1,14 +1,4 @@
-﻿.flex-container {
-    display: flex;
-    flex-wrap: wrap;
+﻿p1 {
+    padding-left: 35px;
 }
 
-.control-label {
-    padding-top: 8px;
-    text-align: left;
-    padding-left: 20px;
-}
-
-label {
-    padding-right: 40px;
-}

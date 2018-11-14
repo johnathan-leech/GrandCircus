@@ -3,11 +3,34 @@
 }
 
 <h2>Welcome to the GC Coffee Shop! </h2>
+<link href="~/Content/Index.css" rel="stylesheet" />
 <a href="/Home/UserRegistration">Register Here</a>
 
-<ul>
-    <li>
-        @*put list of items from table "Items" from database here...*@
-        <input id="searchBar" type="search" name="searchBar" class="search" />
-    </li>
-</ul>
+<br /> <br /> <br />
+  
+
+@{  foreach (var item in ViewBag.ItemsList)
+    {
+    <p>
+        Item: @item.Name (@item.Description) - $@item.Price
+    </p>
+    <p1>
+        In Stock - @item.Quantity
+    </p1>
+    <br /> <br />
+    }
+}
+
+    
+
+
+
+
+
+
+@*<ul>
+        <li>
+            put list of items from table "Items" from database here...
+            <input id="searchBar" type="search" name="searchBar" class="search" />
+        </li>
+    </ul> *@
