@@ -1,8 +1,8 @@
 ﻿var regexFirst = /^[a-zA-Z]{2,}$/;
 var regexLast = /^[a-zA-Z]{2,}$/;
 var regexEmail = /^[A-z0-9]{4,}@[A-z0-9]{2,}\.[A-z0-9]{1,}$/;
-var regexPhone = /^(\+?1?[0-9]{10})|([0-9]{3}[- ][0-9]{3}[- ][0-9]{4})|(\(\d{3}\)\d{3}[- ]\d{4})$/;
-var regexPassword = /^[A-z]{2,}$/;  //TODO: change this for actual regex for password
+var regexPhone = /^(\+?1?[0-9]{10})$|([0-9]{3}[- ][0-9]{3}[- ][0-9]{4})$|(\(\d{3}\)\d{3}[- ]\d{4})$/;
+var regexPassword = /^[a-zA-Z0-9]\w{3,14}$/; 
 
 function ValidateFirstName() {
     if (regexFirst.test(document.getElementById("FirstName").value)) {

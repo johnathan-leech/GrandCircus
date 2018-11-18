@@ -7,14 +7,11 @@ namespace CoffeeShopApplication.Controllers
 {
     public class HomeController : Controller
     {
-        public List<Item> listOfItemsFromDB;
+        private CoffeeShopDBEntities1 database = new CoffeeShopDBEntities1();
 
         public ActionResult Index()
         {
-            CoffeeShopDBEntities1 database = new CoffeeShopDBEntities1();
-            ViewBag.ItemsList = database.Items.ToList<Item>();
-
-            //ViewBag.listItems = database.Items.ToList<Item>();
+            ViewBag.ItemsList = database.Items.ToList();
 
             return View();
         }
@@ -38,6 +35,11 @@ namespace CoffeeShopApplication.Controllers
             return View();
         }
 
+        public ActionResult RegistrationError()
+        {
+            return View();
+        }
+
         IEnumerable<char> CharsToTitleCase(string s)
         {
             bool newWord = true;
@@ -56,7 +58,7 @@ namespace CoffeeShopApplication.Controllers
                 string firstName = new string(CharsToTitleCase(newUserInfo.FirstName).ToArray());
 
                 ViewBag.ConfMessage1 = "Welcome " + firstName;
-                ViewBag.AddedUser = "Item was successfully added";
+                ViewBag.AddedUser = "Your information was successfully added!";
                 User newUser = UserFromUserInfo(newUserInfo);
                 AddInfo(newUser);
 
@@ -64,13 +66,14 @@ namespace CoffeeShopApplication.Controllers
             }
             else
             {
-                return View("Error");
+                TempData["ErrorMessage"] = "Unfortunately you have entered invalid information. If you would like to try again please click the link below";
+                return View("RegistrationError");
             }
         }
 
         public void AddInfo(User newUser)
         {
-            CoffeeShopDBEntities database = new CoffeeShopDBEntities();   // Object Relational Mapping
+            CoffeeShopDBEntities1 database = new CoffeeShopDBEntities1();   // Object Relational Mapping
             database.Users.Add(newUser);
             database.SaveChanges();
         }
@@ -86,5 +89,18 @@ namespace CoffeeShopApplication.Controllers
 
             return newUser;
         }
+
+        public ActionResult ProductAdmin()
+        {
+            ViewBag.ItemsList = database.Items.ToList<Item>();
+            return View();
+        }
+
+        public ActionResult AddNewItem()
+        {
+            return View();
+        }
+
+
     }
 }

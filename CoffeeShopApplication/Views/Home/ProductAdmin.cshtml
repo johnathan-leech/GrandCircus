@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "ProductAdmin";
+}
+
+<h2>Product Admin</h2>
+
+<a href="/Home/AddNewItem">Add New Item</a>
+<br /> <br /> <br />
+
+@{ foreach (var item in ViewBag.ItemsList)
+    {
+        <p>
+            Item: @item.Name (@item.Description) - $@item.Price 
+            <button type="submit" id="deleteItem">Delete</button> 
+            <button type="submit" id="editItem">Edit</button> 
+        </p> 
+
+        <p1> In Stock - @item.Quantity</p1>
+        <br /> <br />
+    }
+}

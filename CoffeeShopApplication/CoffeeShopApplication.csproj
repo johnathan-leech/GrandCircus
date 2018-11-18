@@ -155,24 +155,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DAO.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CoffeeShopDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CoffeeShopDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CoffeeShopDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CoffeeShopDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\CoffeeShopDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CoffeeShopDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Item.cs">
       <DependentUpon>Items.tt</DependentUpon>
@@ -209,16 +195,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\CoffeeShopDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoffeeShopDB.edmx</DependentUpon>
-      <LastGenOutput>CoffeeShopDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\CoffeeShopDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoffeeShopDB.edmx</DependentUpon>
-      <LastGenOutput>CoffeeShopDB.cs</LastGenOutput>
-    </Content>
     <Content Include="Models\Items.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Items.edmx</DependentUpon>
@@ -233,13 +209,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\CoffeeShopDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CoffeeShopDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\CoffeeShopDB.edmx.diagram">
-      <DependentUpon>CoffeeShopDB.edmx</DependentUpon>
     </Content>
     <EntityDeploy Include="Models\Items.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -276,6 +245,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\UserRegistration.cshtml" />
     <Content Include="Views\Home\Confirm.cshtml" />
+    <Content Include="Views\Home\ProductAdmin.cshtml" />
+    <Content Include="Views\Home\AddNewItem.cshtml" />
+    <Content Include="Views\Home\RegistrationError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
