@@ -118,14 +118,14 @@ namespace GCUniversity.Controllers
 
         public ActionResult SaveStudentUpdates(Student updateStudent)
         {
-            Student oldStudent = DB.Students.Find(updateStudent.Id);
+            Student editedStudent = DB.Students.Find(updateStudent.Id);
 
-            oldStudent.FirstName = updateStudent.FirstName;
-            oldStudent.LastName = updateStudent.LastName;
-            oldStudent.PhoneNumber = updateStudent.PhoneNumber;
-            oldStudent.Address = updateStudent.Address;
+            editedStudent.FirstName = updateStudent.FirstName;
+            editedStudent.LastName = updateStudent.LastName;
+            editedStudent.PhoneNumber = updateStudent.PhoneNumber;
+            editedStudent.Address = updateStudent.Address;
 
-            DB.Entry(oldStudent).State = System.Data.Entity.EntityState.Modified;
+            DB.Entry(editedStudent).State = System.Data.Entity.EntityState.Modified;
             DB.SaveChanges();
 
             return RedirectToAction("ListOfStudents");
@@ -139,12 +139,12 @@ namespace GCUniversity.Controllers
 
         public ActionResult SaveCourseUpdates(Course updateCourse)
         {
-            Course oldCourse = DB.Courses.Find(updateCourse.Id);
+            Course editedCourse = DB.Courses.Find(updateCourse.Id);
 
-            oldCourse.Name = updateCourse.Name;
-            oldCourse.Category = updateCourse.Category;
+            editedCourse.Name = updateCourse.Name;
+            editedCourse.Category = updateCourse.Category;
 
-            DB.Entry(oldCourse).State = System.Data.Entity.EntityState.Modified;
+            DB.Entry(editedCourse).State = System.Data.Entity.EntityState.Modified;
             DB.SaveChanges();
 
             return RedirectToAction("ListOfCourses");
