@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "ListOfCourses";
+}
+
+<h2>List of Courses</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Update</th>
+        <th>Delete</th>
+        <th>Students in this Course</th>
+    </tr>
+    @foreach(dynamic course in ViewBag.CourseList)
+    {
+        <tr>
+            <td>@course.Name</td>
+            <td>@course.Category</td>
+            <td><a href="/Home/EditCourse?Id=@course.Id">Edit</a></td>
+            <td><a href="/Home/DeleteCourse?Id=@course.Id">Delete</a></td>
+            <td>@foreach(dynamic student in ViewBag.StudentList)
+            {
+                foreach(dynamic both in ViewBag.StudentCourse)
+                {
+                    if(course.Id == both.CourseID && student.Id == both.StudentID)
+                    {
+                            @student.FirstName;<span> </span> @student.LastName<span>, </span>
+                        }
+                    }
+                }
+            </td>
+        </tr>
+
+    }
+</table>
+
+<a href="/Home/AddCourse">Add New Course</a>

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "EditStudent";
+}
+
+<h2>Edit Student</h2>
+
+<form action="/Home/SaveStudentUpdates" method="post" class="form-group">
+    <input type="hidden" name="Id" value="@ViewBag.EditStudent.Id"class="form-control"/><br />
+    <input type="text" name="FirstName" value="@ViewBag.EditStudent.FirstName" 
+           placeholder="@ViewBag.EditStudent.FirstName" class="form-control" /><br />
+    <input type="text" name="LastName" value="@ViewBag.EditStudent.LastName"
+           placeholder="@ViewBag.EditStudent.LastName" class="form-control" /><br />
+    <input type="text" name="PhoneNumber" value="@ViewBag.EditStudent.PhoneNumber" 
+           placeholder="@ViewBag.EditStudent.PhoneNumber" class="form-control" /><br />
+    <input type="text" name="Address" value="@ViewBag.EditStudent.Address"
+           placeholder="@ViewBag.EditStudent.Address" class="form-control" /><br />
+    <input type="submit" class="btn" value="Save Changes" />
+</form>

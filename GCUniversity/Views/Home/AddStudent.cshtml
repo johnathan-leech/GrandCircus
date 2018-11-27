@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "AddStudent";
+}
+
+<h2>Add Student</h2>
+
+<form action="/Home/SaveNewStudent" class="form-group" method="post">
+    <input type="hidden" name="Id" class="form-control" /><br />
+    <input type="text" name="FirstName" placeholder="First Name" class="form-control"/><br />
+    <input type="text" name="LastName" placeholder="Last Name" class="form-control"/><br />
+    <input type="text" name="PhoneNumber" placeholder="Phone Number" class="form-control"/><br />
+    <input type="text" name="Address" placeholder="Address" class="form-control"/><br />
+    <input type="submit" class="btn" value="Add New Student" /><br /><br />
+    <input type="reset" class="btn" value="Reset Form" />
+</form>

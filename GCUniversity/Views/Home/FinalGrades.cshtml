@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "FinalGrades";
+}
+
+<h2>FinalGrades</h2>
+
+@*THIS PAGE NEEDS REVISION, NOT COMPLETE (BUT NOT NECESSARY FOR APPLICABLE GRADE)*@
+
+<table class="table">
+    <tr>
+        <th>Course(Name)</th>
+        <th>Student(Name)</th>
+        <th>Semester</th>
+        <th>Final Grade</th>
+    </tr>
+    @foreach (dynamic grade in ViewBag.FinalGradeList)
+    {
+        <tr>
+            <td>@foreach (dynamic course in ViewBag.CourseList)
+                {
+                    foreach (dynamic student in ViewBag.StudentList)
+                    {
+                        if (grade.CourseID == course.Id)
+                        {
+                            @course.Name;
+                        }
+                    @*<td>
+                        @if (student.Id == grade.StudentID)
+                        {
+                            @student.FirstName<span> </span>@student.LastName
+                        }
+                    </td>*@
+
+                    }
+                }
+            </td>
+        </tr>
+    }
+    
+
+    </table>
+    
