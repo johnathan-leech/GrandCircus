@@ -1,0 +1,6 @@
+﻿<br /><br /><br />
+
+@foreach (dynamic item in ViewBag.ResultKey)
+{
+    <li><a href="/Home/Index?id=@item["id"]"/>@item["name"]</li>
+}
