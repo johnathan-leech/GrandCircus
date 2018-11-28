@@ -1,0 +1,12 @@
+﻿<form action="/Home/SaveCarUpdate" method="post" class="form-group">
+    <input type="hidden" name="Id" value="@ViewBag.EditCar.Id" class="form-control" /><br />
+    <input type="text" name="Make" value="@ViewBag.EditCar.Make" placeholder="@ViewBag.EditCar.Make" 
+           class="form-control" /><br />
+    <input type="text" name="Model" value="@ViewBag.EditCar.Model" placeholder="@ViewBag.EditCar.Model" 
+           class="form-control" /><br />
+    <input type="number" name="Year" value="@ViewBag.EditCar.Year" placeholder="@ViewBag.EditCar.Year" 
+           min="1950" max="@DateTime.Now.Year" class="form-control" /><br />
+    <input type="text" name="Color" value="@ViewBag.EditCar.Color" placeholder="@ViewBag.EditCar.Color" 
+           class="form-control" /><br />
+    <input type="submit" class="btn" value="Save Changes" />
+</form>

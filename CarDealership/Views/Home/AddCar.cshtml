@@ -1,0 +1,12 @@
+﻿<br /><br /><br />
+
+<form action="/Home/SaveNewCar">
+    <div class="input-group">
+        <input type="hidden" name="Id" />
+        <input type="text" name="Make" placeholder="Make" /> <br /> <br />
+        <input type="text" name="Model" placeholder="Model" /> <br /> <br />
+        <input type="number" name="Year" placeholder="Year" min="1950" max="@DateTime.Now.Year" /> <br /> <br />
+        <input type="text" name="Color" placeholder="Color" /> <br /> <br />
+        <input type="submit" value="Add This Car" />
+    </div>
+</form>
